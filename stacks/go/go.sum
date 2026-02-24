@@ -1,0 +1,2 @@
+// Run `go mod tidy` to generate the correct go.sum file.
+// This placeholder exists to indicate that dependency verification is required.

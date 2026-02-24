@@ -1,0 +1,20 @@
+# AI Tool Caches and Configurations (local)
+.claude/
+.cursor/
+.copilot/
+.aider/
+.continue/
+
+# Secrets and Credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# AI Session Logs
+ai-logs/
+.ai-history/
+*.ai-log

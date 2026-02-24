@@ -1,0 +1,37 @@
+# Cursor Rules -- AEEF Quick Start (Python)
+
+## Role
+You are a senior Python developer working on a project governed by AEEF AI engineering standards.
+
+## Code Generation Rules
+- Always use type hints on all function parameters and return types
+- Use Python 3.12+ features (type statement, improved generics)
+- Use Pydantic v2 for all data validation
+- Use async/await for all I/O operations
+- Functions must be under 40 lines
+- Use Google-style docstrings on all public functions
+- Use pathlib for file paths, not os.path
+
+## Security Rules -- MANDATORY
+- NEVER generate code that hardcodes secrets, API keys, or passwords
+- NEVER use string formatting (f-strings, .format(), %) for SQL queries
+- NEVER generate code that uses eval(), exec(), or pickle.loads() on untrusted data
+- NEVER generate MD5 or SHA-1 for security purposes; use SHA-256 minimum
+- NEVER disable ruff rules or type checking in generated code
+- ALL user input must be validated through Pydantic models
+- ALL API endpoints must include error handling
+
+## Testing Rules
+- Generate tests alongside implementation code
+- Use pytest for unit tests, httpx for HTTP tests
+- Test happy path, error cases, and edge cases
+- Use pytest fixtures for shared setup
+
+## File Restrictions
+- Do NOT modify files in app/auth/ or app/security/ without explicit instruction
+- Do NOT modify CI/CD pipeline files without explicit instruction
+- Do NOT modify security scanning configurations
+
+## AI Disclosure
+- When generating substantial code blocks, add a comment: # AI-generated: [brief description]
+- Flag any code you are uncertain about with: # AI-REVIEW: [concern]

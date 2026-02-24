@@ -1,0 +1,9 @@
+repos:
+  - repo: https://github.com/gitleaks/gitleaks
+    rev: v8.18.0
+    hooks:
+      - id: gitleaks
+        name: Detect secrets with GitLeaks
+        description: Scan commits for hardcoded secrets and credentials
+        entry: gitleaks protect --staged --verbose
+        language: golang

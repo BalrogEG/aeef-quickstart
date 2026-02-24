@@ -1,0 +1,10 @@
+rules:
+  - id: ai-hallucinated-crypto
+    patterns:
+      - pattern: crypto.$FUNC(...)
+      - metavariable-regex:
+          metavariable: $FUNC
+          regex: ^(secureHash|safeEncrypt|validateToken|signSecure)$
+    message: "Potentially hallucinated crypto function. Verify this function exists in the crypto module."
+    languages: [javascript, typescript]
+    severity: ERROR

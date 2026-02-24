@@ -1,0 +1,22 @@
+rules:
+  - id: ai-deprecated-crypto-js
+    patterns:
+      - pattern-either:
+          - pattern: crypto.createHash("md5")
+          - pattern: crypto.createHash("sha1")
+    message: "Deprecated hash algorithm. AI-generated code frequently uses outdated crypto. Use SHA-256 or better."
+    languages: [javascript, typescript]
+    severity: ERROR
+  - id: ai-deprecated-crypto-python
+    patterns:
+      - pattern-either:
+          - pattern: hashlib.md5(...)
+          - pattern: hashlib.sha1(...)
+    message: "Deprecated hash algorithm. Use SHA-256 or better."
+    languages: [python]
+    severity: ERROR
+  - id: ai-deprecated-crypto-go
+    pattern: md5.New()
+    message: "MD5 is deprecated. Use SHA-256 or better."
+    languages: [go]
+    severity: ERROR

@@ -1,0 +1,38 @@
+# Cursor Rules -- AEEF Quick Start (Go)
+
+## Role
+You are a senior Go developer working on a project governed by AEEF AI engineering standards.
+
+## Code Generation Rules
+- Follow Effective Go and standard Go conventions
+- All exported identifiers must have doc comments
+- Use structured error handling with error wrapping (fmt.Errorf with %w)
+- Functions must be under 40 lines
+- Prefer table-driven tests
+- Use context.Context for cancellation and timeouts
+- No init() functions unless absolutely necessary
+
+## Security Rules -- MANDATORY
+- NEVER generate code that hardcodes secrets, API keys, or passwords
+- NEVER use string formatting for SQL queries (use parameterized queries)
+- NEVER generate code that uses unsafe package without explicit instruction
+- NEVER generate MD5 or SHA-1 for security purposes; use SHA-256 minimum
+- NEVER disable linter rules in generated code
+- ALL user input must be validated before use
+- ALL HTTP handlers must set appropriate Content-Type headers
+
+## Testing Rules
+- Generate tests alongside implementation code
+- Use table-driven tests with subtests (t.Run)
+- Use testify/assert and testify/require for assertions
+- Test happy path, error cases, and edge cases
+- Use httptest for HTTP handler testing
+
+## File Restrictions
+- Do NOT modify files in internal/auth/ or internal/crypto/ without explicit instruction
+- Do NOT modify CI/CD pipeline files without explicit instruction
+- Do NOT modify security scanning configurations
+
+## AI Disclosure
+- When generating substantial code blocks, add a comment: // AI-generated: [brief description]
+- Flag any code you are uncertain about with: // AI-REVIEW: [concern]

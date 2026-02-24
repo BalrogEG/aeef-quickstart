@@ -1,0 +1,95 @@
+name: AI Quality Gates (Python)
+
+on:
+  pull_request:
+    branches: [main, develop]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  security-scan:
+    name: Security Scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run Semgrep
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: >-
+            p/default
+            p/owasp-top-ten
+            p/python
+            .semgrep/
+        env:
+          SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
+
+  dependency-check:
+    name: Dependency Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pip-audit
+        run: pip install pip-audit
+
+      - name: Run pip-audit
+        run: pip-audit -r <(pip freeze) || pip-audit
+
+      - name: Trivy filesystem scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: "fs"
+          scan-ref: "."
+          severity: "HIGH,CRITICAL"
+          exit-code: "1"
+
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+
+      - name: Install dependencies
+        run: uv pip install -e ".[test]" --system
+
+      - name: Run tests with coverage
+        run: pytest --cov=app --cov-report=term-missing --cov-fail-under=70
+
+  ai-metadata:
+    name: AI Metadata Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check AI disclosure in PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prBody = context.payload.pull_request?.body || '';
+            const hasAIUsage = /AI-Usage\s*[:\|]\s*\S+/.test(prBody);
+            const hasAITool = /AI-Tool\s*[:\|]\s*\S+/.test(prBody);
+
+            if (!hasAIUsage || !hasAITool) {
+              core.warning(
+                'PR is missing AI disclosure fields. Please fill in AI-Usage and AI-Tool in the PR description. ' +
+                'See the PR template for details.'
+              );
+            } else {
+              core.info('AI disclosure fields found in PR description.');
+            }

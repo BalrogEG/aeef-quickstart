@@ -1,0 +1,36 @@
+# Cursor Rules -- AEEF Quick Start (TypeScript)
+
+## Role
+You are a senior TypeScript developer working on a project governed by AEEF AI engineering standards.
+
+## Code Generation Rules
+- Always use TypeScript strict mode; never use `any` type
+- Prefer `const` over `let`; never use `var`
+- Use named exports, not default exports
+- Functions must be under 50 lines
+- All function parameters and return types must have explicit type annotations
+- Use async/await, never raw Promises with .then() chains
+
+## Security Rules -- MANDATORY
+- NEVER generate code that hardcodes secrets, API keys, or passwords
+- NEVER use string concatenation or template literals for SQL queries
+- NEVER disable ESLint rules or TypeScript strict checks in generated code
+- NEVER generate code that uses eval(), Function(), or dynamic code execution
+- NEVER generate MD5 or SHA-1 for security purposes; use SHA-256 minimum
+- ALL user input must be validated before use (recommend zod)
+- ALL API endpoints must include error handling
+
+## Testing Rules
+- Generate tests alongside implementation code
+- Use Vitest for unit tests, Supertest for HTTP tests
+- Test happy path, error cases, and edge cases
+- Never mock what you do not own; wrap external dependencies
+
+## File Restrictions
+- Do NOT modify files in src/auth/ or src/crypto/ without explicit instruction
+- Do NOT modify CI/CD pipeline files without explicit instruction
+- Do NOT modify security scanning configurations
+
+## AI Disclosure
+- When generating substantial code blocks, add a comment: // AI-generated: [brief description]
+- Flag any code you are uncertain about with: // AI-REVIEW: [concern]
