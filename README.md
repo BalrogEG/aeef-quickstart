@@ -1,5 +1,7 @@
 # AEEF Quick Start -- Safe AI-Assisted Development in 30 Minutes
 
+[![Release](https://img.shields.io/github/v/release/BalrogEG/aeef-quickstart?display_name=tag)](https://github.com/BalrogEG/aeef-quickstart/releases)
+
 A working reference implementation of **AEEF Tier 1** standards. Clone this template, pick your stack, and ship AI-assisted code with guardrails from day one.
 
 ## What This Is
