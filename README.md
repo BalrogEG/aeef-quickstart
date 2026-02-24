@@ -29,7 +29,7 @@ Every configuration file, CI pipeline, and policy document maps directly to a pu
 ### Option 2: Clone Directly
 
 ```bash
-git clone https://github.com/aeef-standards/aeef-quickstart.git
+git clone https://github.com/BalrogEG/aeef-quickstart.git
 cd aeef-quickstart
 ```
 
