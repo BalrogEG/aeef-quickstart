@@ -13,6 +13,9 @@ Every file in this repository traces back to a published AEEF standard. Use this
 | `shared/.gitignore.append` | PRD-STD-004 (Security Scanning) | Excludes AI tool caches, secrets, and logs from version control |
 | `shared/.github/pull_request_template.md` | PRD-STD-002 (Code Review) | Requires AI disclosure fields (tool, usage level, risk notes) on every PR |
 | `shared/schemas/ai-provenance.schema.json` | PRD-STD-001 (Prompt Engineering) | JSON Schema for tracking AI code provenance (tool, model, reviewer, approval) |
+| `shared/schemas/hook-contract.schema.json` | PRD-STD-009 (Autonomous Agent Governance) | Optional schema for role hook policy contracts during orchestration adoption |
+| `shared/schemas/gate-decision.schema.json` | PRD-STD-007 (Quality Gates) | Optional schema for standardized gate decision artifacts |
+| `shared/schemas/run-ledger-entry.schema.json` | PRD-STD-009 (Autonomous Agent Governance) | Optional schema for auditable run-ledger records |
 | `shared/policies/acceptable-use-policy-startup.md` | PRD-STD-001 (Prompt Engineering) | Defines approved AI tools, prohibited uses, and human review requirements |
 | `shared/policies/data-classification-quick-ref.md` | PRD-STD-004 (Security Scanning) | Maps data classification levels to permitted AI tool usage |
 | `shared/docs/decisions/000-use-aeef-standards.md` | PRD-STD-002 (Code Review) | ADR documenting the decision to adopt AEEF standards |
@@ -28,3 +31,4 @@ Every file in this repository traces back to a published AEEF standard. Use this
 | `stacks/typescript/.vscode/extensions.json` | PRD-STD-004 (Security Scanning) | Recommends ESLint, Prettier, and Semgrep VS Code extensions |
 | `stacks/go/.golangci.yml` | PRD-STD-004 (Security Scanning) | Configures golangci-lint with security-focused linters (gosec, errcheck) |
 | `stacks/*/scripts/setup.sh` | All | Copies shared configs into the stack project for standalone use |
+| `shared/docs/adaptation/mcp-a2a-adaptation.md` | PRD-STD-009, PRD-STD-017 | Optional guidance for MCP-required / A2A-progressive interoperability |

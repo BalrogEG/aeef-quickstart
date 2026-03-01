@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://aeef.dev/schemas/gate-decision.schema.json",
+  "title": "GateDecision v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["gate_id", "stage", "criteria_results", "decision", "required_human_approver", "evidence_refs"],
+  "properties": {
+    "gate_id": { "type": "string" },
+    "stage": { "type": "string" },
+    "criteria_results": { "type": "array" },
+    "decision": { "type": "string", "enum": ["pass", "fail", "conditional"] },
+    "required_human_approver": { "type": ["string", "null"] },
+    "evidence_refs": { "type": "array", "items": { "type": "string" } }
+  }
+}

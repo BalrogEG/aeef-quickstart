@@ -112,6 +112,11 @@ Full documentation, standard definitions, and compliance guidance:
 
 **https://aeef.ai/reference-implementations/quickstart**
 
+Optional adaptation pack (for external orchestration readiness):
+
+- `shared/docs/adaptation/mcp-a2a-adaptation.md`
+- Additional schemas for hooks, gate decisions, and run-ledger entries in `shared/schemas/`
+
 ## License
 
 Apache 2.0 -- see [LICENSE](./LICENSE).
